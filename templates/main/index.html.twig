@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Word Counter{% endblock %}
+
+{% block body %}
+<style>
+    .wrapper { margin: 1em; text-align: center }
+    textarea { width: 80%; min-height: 150px; display:block; margin: auto }
+    h1 { }
+    .result { font-size: 2em; margin-top: 1em }
+</style>
+
+<div class="wrapper">
+    <h1>Word Counter App</h1>
+
+    <textarea
+        autofocus
+        placeholder="Enter your text here"
+        id="textAreaID"
+        oninput="document.getElementById('result').innerHTML = document.getElementById('textAreaID').value.trim().split(' ').length + ' words';"
+    ></textarea>
+
+    <div id="result">0 word</div>
+
+</div>
+
+<script>
+    
+</script>
+{% endblock %}
