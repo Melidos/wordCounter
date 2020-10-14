@@ -7,7 +7,7 @@
     .wrapper { margin: 1em; text-align: center }
     textarea { width: 80%; min-height: 150px; display:block; margin: auto }
     h1 { }
-    .result { font-size: 2em; margin-top: 1em }
+    #words, #characters { font-size: 2em; margin-top: 1em }
 </style>
 
 <div class="wrapper">
@@ -17,10 +17,16 @@
         autofocus
         placeholder="Enter your text here"
         id="textAreaID"
-        oninput="document.getElementById('result').innerHTML = document.getElementById('textAreaID').value.trim().split(' ').length + ' words';"
+        oninput="
+            var wordsArray = document.getElementById('textAreaID').value.trim().split(' ').filter(el => el != '');
+            console.log(wordsArray);
+            document.getElementById('words').innerHTML = wordsArray.length + ' words';
+            document.getElementById('characters').innerHTML = wordsArray.reduce((acc, el) => acc + el.length, 0) + ' characters';
+            "
     ></textarea>
 
-    <div id="result">0 word</div>
+    <div id="words">0 word</div>
+    <div id="characters">0 characters</div>
 
 </div>
 
